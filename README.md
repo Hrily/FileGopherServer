@@ -1,6 +1,6 @@
 # FileGopherServer
 
-FileGopherServer is a Gopher server which serves the file listing on a gopher server.
+FileGopherServer is a Gopher server which serves the file listing.
 
 I've tried as much as possible to align the implementation with the Gopher [RFC 1436](https://www.ietf.org/rfc/rfc1436.txt).
 This server is non-gopher+, but supports gateway for gopher+ clients as a forward compatibility.
@@ -32,3 +32,7 @@ $ ./server .
 - [ ] Implement efficient method to check a file is text or binary.
 - [ ] Implement efficient method to send file to client.
 - [ ] Add option to list hiddens files.
+
+## Documentation
+
+You can find the docs [here](https://hrily.github.io/FileGopherServer).
