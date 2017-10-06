@@ -27,11 +27,24 @@ For example, to serve current directory:
 $ ./server .
 ```
 
+## Gopher clients
+
+In order to see server contents, you will need a Gopher client.
+
+Ubuntu has it in it's repository. To install it, type:
+```
+$ sudo apt-get install gopher
+```
+
+See [Overbite Project](gopher.floodgap.com/overbite/ "Overbite Project") for clients for major platforms.
+
+[DiggieDog](https://play.google.com/store/apps/details?id=com.afewroosloose.gopher) is a nice client for Android.
+
 ## TODO
 
 - [ ] Implement efficient method to check a file is text or binary.
 - [ ] Implement efficient method to send file to client.
-- [ ] Add option to list hiddens files.
+- [ ] Add option to list hidden files.
 
 ## Documentation
 

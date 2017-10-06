@@ -62,19 +62,25 @@ $(function() {
 <div class="title"><a class="el" href="classFileGopherServer.html" title="Class for FileGopherServer. ">FileGopherServer</a> </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="el" href="classFileGopherServer.html" title="Class for FileGopherServer. ">FileGopherServer</a> is a Gopher server which serves the file listing on a gopher server.</p>
-<p>I've tried as much as possible to align the implementation with the Gopher <a href="https://www.ietf.org/rfc/rfc1436.txt">RFC 1436</a>. This server is non-gopher+, but supports gateway for gopher+ clients as forward compatibility.</p>
+<div class="textblock"><p><a class="el" href="classFileGopherServer.html" title="Class for FileGopherServer. ">FileGopherServer</a> is a Gopher server which serves the file listing.</p>
+<p>I've tried as much as possible to align the implementation with the Gopher <a href="https://www.ietf.org/rfc/rfc1436.txt">RFC 1436</a>. This server is non-gopher+, but supports gateway for gopher+ clients as a forward compatibility.</p>
 <h2>About Gopher</h2>
 <p>Gopher is a pre-HTTP protocol for browsing the internet. It is easy to use and light-weight, even for implementation. To know more about Gopher visit wiki page <a href="https://en.wikipedia.org/wiki/Gopher_\(protocol\)" title="Gopher protocol - Wikipedia">Wiki</a>.</p>
 <h2>Compilation</h2>
-<div class="fragment"><div class="line">g++ -o server server.cpp -std=gnu++11</div></div><!-- fragment --><h2>Usage</h2>
+<div class="fragment"><div class="line">$ g++ -o server server.cpp -std=gnu++11</div></div><!-- fragment --><h2>Usage</h2>
 <div class="fragment"><div class="line">$ ./server &lt;directory-to-serve&gt;</div></div><!-- fragment --><p>For example, to serve current directory:</p>
-<div class="fragment"><div class="line">$ ./server .</div></div><!-- fragment --><h2>TODO</h2>
+<div class="fragment"><div class="line">$ ./server .</div></div><!-- fragment --><h2>Gopher clients</h2>
+<p>In order to see server contents, you will need a Gopher client.</p>
+<p>Ubuntu has it in it's repository. To install it, type: </p><div class="fragment"><div class="line">$ sudo apt-get install gopher</div></div><!-- fragment --><p>See <a href="gopher.floodgap.com/overbite/" title="Overbite Project">Overbite Project</a> for clients for major platforms.</p>
+<p><a href="https://play.google.com/store/apps/details?id=com.afewroosloose.gopher">DiggieDog</a> is a nice client for Android.</p>
+<h2>TODO</h2>
 <ul>
 <li>[ ] Implement efficient method to check a file is text or binary.</li>
 <li>[ ] Implement efficient method to send file to client.</li>
-<li>[ ] Add option to list hiddens files. </li>
+<li>[ ] Add option to list hidden files.</li>
 </ul>
+<h2>Documentation</h2>
+<p>You can find the docs <a href="https://hrily.github.io/FileGopherServer">here</a>. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
