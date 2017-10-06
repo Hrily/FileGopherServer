@@ -36,7 +36,7 @@ Ubuntu has it in it's repository. To install it, type:
 $ sudo apt-get install gopher
 ```
 
-See [Overbite Project](gopher.floodgap.com/overbite/ "Overbite Project") for clients for major platforms.
+See [Overbite Project](http://gopher.floodgap.com/overbite/ "Overbite Project") for clients for major platforms.
 
 [DiggieDog](https://play.google.com/store/apps/details?id=com.afewroosloose.gopher) is a nice client for Android.
 
