@@ -62,7 +62,6 @@ class FileGopherServer {
     FileGopherServer();
     void start(int n_connections = 5);
     void add_route(string route, string content);
-    string getroot();
 };
 
 /********* Private Functions **********/
@@ -79,7 +78,7 @@ void FileGopherServer::error(const char *msg) {
 /**
  * Function to check if the given path is a 
  * regular file or directory.
- * @param file The path to file.
+ * @param path The path to file.
  * @return True if path is a regular file.
  */
 bool FileGopherServer::is_regular_file(const char *path) {
@@ -312,9 +311,20 @@ void FileGopherServer::add_route(string route, string content) {
 
 
 // Driver function.
-int main(){
+int main(int argc, char *argv[]){
+    // Print Usage.
+    if(argc != 2){
+        printf("USAGE: \n\tserver <directory-to-serve>\n\n");
+        printf("Where <directory-to-serve> root directory of server.\n");
+        return 0;
+    }
+    // Check if given directory can be opened.
+    if(opendir(argv[1]) == NULL) {
+        cout << "Error(" << errno << ") opening " << argv[1] << endl;
+        return 0;
+    }    
     // Creat and start FileGopherServer.
-    FileGopherServer fileGopherServer("/home/hrishi", 7070);
+    FileGopherServer fileGopherServer(argv[1], 7070);
     fileGopherServer.start();
     return 0;
 }
