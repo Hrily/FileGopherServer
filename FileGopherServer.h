@@ -42,28 +42,28 @@ using namespace std;
 
 class FileGopherServer
 {
-    //! Socket File descriptoe and the port.
-    int socket_fd, socket_port;
-    char buffer[BUFFER_LEN];
-    //! Map to hold routes.
-    unordered_map<string, string> routes;
-    struct sockaddr_in server_addr, client_addr;
-    string root;
-    string socket_host;
-    static void error(const char *msg);
-    static bool is_regular_file(const char *path);
-    static bool is_text_file(const char *file);
-    static char get_file_type(const char *file);
-    void send_file_contents(int client_fd, const char *file);
-    int get_contents(char buffer[], int size);
+  //! Socket File descriptoe and the port.
+  int socket_fd, socket_port;
+  char buffer[BUFFER_LEN];
+  //! Map to hold routes.
+  unordered_map<string, string> routes;
+  struct sockaddr_in server_addr, client_addr;
+  string root;
+  string socket_host;
+  static void error(const char *msg);
+  static bool is_regular_file(const char *path);
+  static bool is_text_file(const char *file);
+  static char get_file_type(const char *file);
+  void send_file_contents(int client_fd, const char *file);
+  int get_contents(char buffer[], int size);
 
-  public:
-    static string create_line(char type, string user_setting,
-                              string path = "", string host = "error.host", int port = 1);
-    FileGopherServer(string root, int port);
-    FileGopherServer();
-    void start(int n_connections = 5);
-    void add_route(string route, string content);
+public:
+  static string create_line(char type, string user_setting,
+                            string path = "", string host = "error.host", int port = 1);
+  FileGopherServer(string root, int port);
+  FileGopherServer();
+  void start(int n_connections = 5);
+  void add_route(string route, string content);
 };
 
 #endif

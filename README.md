@@ -12,7 +12,7 @@ Gopher is a pre-HTTP protocol for browsing the internet. It is easy to use and l
 ## Compilation
 
 ```
-$ g++ -o server server.cpp -std=gnu++11
+$ g++ -o server server.cpp FileGopherServer.cpp -std=gnu++11
 ```
 
 ## Usage
