@@ -93,7 +93,8 @@ void FileGopherServer::send_file_contents(int client_fd, const char *file)
  * @param size The size of selector.
  * @return The size of contents.
  */
-int FileGopherServer::get_contents(char buffer[], int size)
+int FileGopherServer::get_contents(char buffer[], int size, bool 
+show_hidden_files)
 {
     // Remove CRLF from selector.
     if (buffer[size - 2] == CR && buffer[size - 1] == LF)
@@ -137,7 +138,7 @@ int FileGopherServer::get_contents(char buffer[], int size)
     {
         // Skip hidden files
         // TODO: Add parameter to show hidden files
-        if (dirp->d_name[0] == '.')
+        if (dirp->d_name[0] == '.' && !show_hidden_files)
             continue;
         string filename = dir + "/" + string(dirp->d_name);
         files += create_line(
@@ -178,10 +179,12 @@ string FileGopherServer::create_line(char type, string user_string,
  * @param root The root of FileGopherServer.
  * @param port The port of the server.
  */
-FileGopherServer::FileGopherServer(string root, int port)
+FileGopherServer::FileGopherServer(string root, int port, bool 
+show_hidden_files)
 {
     this->root = root;
     this->socket_port = port;
+    this->show_hidden_files = show_hidden_files;
     // Create socket
     socket_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (socket_fd < 0)
@@ -218,7 +221,7 @@ FileGopherServer::FileGopherServer(string root, int port)
  */
 FileGopherServer::FileGopherServer()
 {
-    FileGopherServer("/", 70);
+    FileGopherServer("/", 70, false);
 }
 
 /**
@@ -228,6 +231,8 @@ FileGopherServer::FileGopherServer()
  */
 void FileGopherServer::start(int n_connections)
 {
+     cout << "Serving " + root + " at 0.0.0.0:" + to_string(socket_port) << 
+     endl;
     if (listen(socket_fd, n_connections))
         error("ERROR cannot listen");
     while (true)
@@ -242,7 +247,7 @@ void FileGopherServer::start(int n_connections)
         int n = read(newsocket_fd, buffer, BUFFER_LEN);
         if (n < 0)
             error("ERROR reading from socket");
-        int size = get_contents(buffer, n);
+        int size = get_contents(buffer, n, false);
         if (size >= 0)
             send(newsocket_fd, buffer, size, 0);
         else
