@@ -221,7 +221,7 @@ show_hidden_files)
  */
 FileGopherServer::FileGopherServer()
 {
-    FileGopherServer("/", 70, false);
+    FileGopherServer("/", 70, show_hidden_files);
 }
 
 /**
@@ -247,7 +247,7 @@ void FileGopherServer::start(int n_connections)
         int n = read(newsocket_fd, buffer, BUFFER_LEN);
         if (n < 0)
             error("ERROR reading from socket");
-        int size = get_contents(buffer, n, false);
+        int size = get_contents(buffer, n, show_hidden_files);
         if (size >= 0)
             send(newsocket_fd, buffer, size, 0);
         else
