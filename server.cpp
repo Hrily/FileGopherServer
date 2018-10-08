@@ -351,7 +351,7 @@ int main(int argc, char *argv[])
 
     // Declare the supported options.
     po::options_description desc("Allowed options");
-    desc.add_options()("directory,d", "the directory to serve")("port,p", po::value<int>(), "the port to serve on (default : 70)")("hidden,h", po::value<bool>(), "show hidden files if specified");
+    desc.add_options()("directory,d", "the directory to serve", po::value<string>())("port,p", po::value<int>(), "the port to serve on (default : 70)")("hidden,h", po::value<bool>(), "show hidden files if specified");
 
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, desc), vm);
