@@ -297,6 +297,7 @@ FileGopherServer::FileGopherServer()
  */
 void FileGopherServer::start(int n_connections)
 {
+    cout << "Serving " + root + " at 0.0.0.0:" + to_string(socket_port) << endl;
     if (listen(socket_fd, n_connections))
         error("ERROR cannot listen");
     while (true)
@@ -333,16 +334,6 @@ void FileGopherServer::add_route(string route, string content)
 // Driver function.
 int main(int argc, char *argv[])
 {
-
-    // Print Usage.
-    if (argc != 3)
-    {
-        // printf("USAGE: \n\tserver <directory-to-serve>\n\n");
-        // printf("Where <directory-to-serve> root directory of server.\n");
-        printf("USAGE: -d <directory> or --directory <directory> -p <port> or --port <port> -h <hidden> or --hidden <hidden> , Type --help for help");
-        return 0;
-    }
-
     // variables needed to be captured from command line options
 
     string directory = "."; // defaults to cwd
