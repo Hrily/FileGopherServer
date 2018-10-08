@@ -168,7 +168,8 @@ string FileGopherServer::create_line(char type, string user_string,
     // Convert integer port to string.
     char ch_port[6];
     sprintf(ch_port, "%d", port);
-    return string(1, type) + user_string + TAB + path + TAB + host + TAB + string(ch_port) + CRLF;
+    return string(1, type) + user_string + TAB + path + TAB + host + TAB +
+           string(ch_port) + CRLF;
 }
 
 /**
@@ -204,7 +205,8 @@ FileGopherServer::FileGopherServer(string root, int port)
     // Make the server gopher+ complaint.
     string gopher_plus_content = "";
     gopher_plus_content += "+-1" + CRLF;
-    gopher_plus_content += "+INFO: 1Main menu (non-gopher+)		0.0.0.0	7070" + CRLF;
+    gopher_plus_content += "+INFO: 1Main menu (non-gopher+)		0.0.0.0	7070" +
+                           CRLF;
     gopher_plus_content += EOC;
     add_route("\t$", gopher_plus_content);
     add_route("\t", gopher_plus_content);
