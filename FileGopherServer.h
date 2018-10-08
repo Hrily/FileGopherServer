@@ -35,7 +35,7 @@ using namespace std;
 //! End of Content.
 #define EOC "." + CRLF
 #define MY_HOST "0.0.0.0"
-#define MY_PORT 7070
+
 /**
  * Class for FileGopherServer.
  */

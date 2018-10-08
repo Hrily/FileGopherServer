@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    if (vm.count("compression"))
+    if (vm.count("directory"))
     {
         directory = vm["directory"].as<string>();
     }
