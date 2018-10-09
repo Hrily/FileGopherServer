@@ -220,7 +220,7 @@ show_hidden_files)
  */
 FileGopherServer::FileGopherServer()
 {
-    FileGopherServer("/", 70, show_hidden_files);
+    FileGopherServer("/", 70, false);
 }
 
 /**
