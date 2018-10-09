@@ -93,8 +93,7 @@ void FileGopherServer::send_file_contents(int client_fd, const char *file)
  * @param size The size of selector.
  * @return The size of contents.
  */
-int FileGopherServer::get_contents(char buffer[], int size, bool 
-show_hidden_files)
+int FileGopherServer::get_contents(char buffer[], int size)
 {
     // Remove CRLF from selector.
     if (buffer[size - 2] == CR && buffer[size - 1] == LF)
@@ -231,8 +230,8 @@ FileGopherServer::FileGopherServer()
  */
 void FileGopherServer::start(int n_connections)
 {
-     cout << "Serving " + root + " at 0.0.0.0:" + to_string(socket_port) << 
-     endl;
+    cout << "Serving " + root + " at 0.0.0.0:" + to_string(socket_port) <<
+    endl;
     if (listen(socket_fd, n_connections))
         error("ERROR cannot listen");
     while (true)
@@ -247,7 +246,7 @@ void FileGopherServer::start(int n_connections)
         int n = read(newsocket_fd, buffer, BUFFER_LEN);
         if (n < 0)
             error("ERROR reading from socket");
-        int size = get_contents(buffer, n, show_hidden_files);
+        int size = get_contents(buffer, n);
         if (size >= 0)
             send(newsocket_fd, buffer, size, 0);
         else
