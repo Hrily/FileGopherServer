@@ -35,7 +35,7 @@ using namespace std;
 //! End of Content.
 #define EOC "." + CRLF
 #define MY_HOST "0.0.0.0"
-#define MY_PORT 7070
+
 /**
  * Class for FileGopherServer.
  */
@@ -50,6 +50,7 @@ class FileGopherServer
   struct sockaddr_in server_addr, client_addr;
   string root;
   string socket_host;
+  bool show_hidden_files;
   static void error(const char *msg);
   static bool is_regular_file(const char *path);
   static bool is_text_file(const char *file);
@@ -60,7 +61,7 @@ class FileGopherServer
 public:
   static string create_line(char type, string user_setting,
                             string path = "", string host = "error.host", int port = 1);
-  FileGopherServer(string root, int port);
+  FileGopherServer(string root, int port, bool show_hidden_files);
   FileGopherServer();
   void start(int n_connections = 5);
   void add_route(string route, string content);
