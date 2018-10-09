@@ -202,7 +202,6 @@ show_hidden_files)
     hostentry = gethostbyname(hostname);
     char *ipbuf;
     ipbuf = inet_ntoa(*((struct in_addr *)hostentry->h_addr_list[0]));
-    printf("%s\n", ipbuf);
     this->socket_host = string(ipbuf);
     // Make the server gopher+ complaint.
     string gopher_plus_content = "";

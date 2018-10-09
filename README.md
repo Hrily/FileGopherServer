@@ -9,22 +9,26 @@ This server is non-gopher+, but supports gateway for gopher+ clients as a forwar
 
 Gopher is a pre-HTTP protocol for browsing the internet. It is easy to use and light-weight, even for implementation. To know more about Gopher visit wiki page [Wiki](https://en.wikipedia.org/wiki/Gopher_\(protocol\) "Gopher protocol - Wikipedia").
 
+## Dependencies
+
+FileGopherServer depends upon boost library. Install boost library and then compile FileGopherServer.
+
 ## Compilation
 
 ```
-$ g++ -o server server.cpp FileGopherServer.cpp -std=gnu++11
+$ g++ -o server server.cpp FileGopherServer.cpp -std=gnu++11 -lboost_program_options
 ```
 
 ## Usage
 
 ```
-$ ./server <directory-to-serve>
+$ ./server -d <directory-to-serve>
 ```
 
 For example, to serve current directory:
 
 ```
-$ ./server .
+$ ./server -d .
 ```
 
 ## Gopher clients
@@ -43,8 +47,7 @@ See [Overbite Project](http://gopher.floodgap.com/overbite/ "Overbite Project") 
 ## TODO
 
 - [ ] Implement efficient method to check a file is text or binary.
-- [ ] Implement efficient method to send file to client.
-- [ ] Add option to list hidden files.
+- [x] Add option to list hidden files.
 
 ## Documentation
 

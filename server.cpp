@@ -16,9 +16,10 @@ int main(int argc, char *argv[])
     // Declare the supported options.
     po::options_description desc("Allowed options");
     desc.add_options()
-    ("directory,d", po::value<string>(), "the directory to serve")
-    ("port,p", po::value<int>(), "the port to serve on (default : 70)")
-    ("hidden,h", po::value<bool>(), "show hidden files if specified");
+    ("directory,d", po::value<string>(), "The directory to serve")
+    ("port,p", po::value<int>(), "The port to serve on (default : 70)")
+    ("hidden,h", "Show hidden files if specified")
+    ("help", "Show help");
 
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, desc), vm);
@@ -29,18 +30,17 @@ int main(int argc, char *argv[])
         cout << desc << "\n";
         return 1;
     }
-
     if (vm.count("directory"))
     {
         directory = vm["directory"].as<string>();
     }
-    else if (vm.count("port"))
+    if (vm.count("port"))
     {
         port = vm["port"].as<int>();
     }
-    else if (vm.count("hidden"))
+    if (vm.count("hidden"))
     {
-        show_hidden_files = vm["hidden"].as<bool>();
+        show_hidden_files = true;
     }
 
     // Check if given directory can be opened.
